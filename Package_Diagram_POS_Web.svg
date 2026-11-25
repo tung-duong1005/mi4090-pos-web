@@ -1,0 +1,188 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 994.0 925.0" width="994.0pt" height="925.0pt">
+<title>Kiến trúc phân tầng POS web · Mục 4.3</title>
+<desc>Sơ đồ package thiết kế đích. Frontend gọi API qua HTTPS. Quầy và Kho dùng hợp đồng ứng dụng và Domain chung. Hạ tầng hiện thực hợp đồng và truy cập PostgreSQL.</desc>
+<rect width="100%" height="100%" fill="white"/>
+<text x="20" y="26" font-family="Arial" font-size="21" font-weight="bold" fill="#173047">POS web · Package Diagram</text>
+<text x="20" y="47" font-family="Arial" font-size="12" fill="#364d5b">Mục 4.3 · Thiết kế đích cho một cửa hàng, một quầy và một kho</text>
+<g transform="translate(0,55)">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(20.16 796.48)">
+
+<polygon fill="white" stroke="none" points="-20.16,20.16 -20.16,-796.48 974.33,-796.48 974.33,20.16 -20.16,20.16"/>
+<g id="clust1" class="cluster">
+<title>cluster_fe</title>
+<path fill="#f1faf6" stroke="#78afa2" d="M147,-598.02C147,-598.02 319,-598.02 319,-598.02 325,-598.02 331,-604.02 331,-610.02 331,-610.02 331,-756.32 331,-756.32 331,-762.32 325,-768.32 319,-768.32 319,-768.32 147,-768.32 147,-768.32 141,-768.32 135,-762.32 135,-756.32 135,-756.32 135,-610.02 135,-610.02 135,-604.02 141,-598.02 147,-598.02"/>
+<text xml:space="preserve" text-anchor="middle" x="233" y="-748.17" font-family="Arial" font-size="17.00">Frontend &#160;· &#160;Trình duyệt</text>
+</g>
+<g id="clust2" class="cluster">
+<title>cluster_be</title>
+<path fill="white" stroke="#58788f" stroke-width="1.6" d="M20,-8C20,-8 716,-8 716,-8 722,-8 728,-14 728,-20 728,-20 728,-554.02 728,-554.02 728,-560.02 722,-566.02 716,-566.02 716,-566.02 20,-566.02 20,-566.02 14,-566.02 8,-560.02 8,-554.02 8,-554.02 8,-20 8,-20 8,-14 14,-8 20,-8"/>
+<text xml:space="preserve" text-anchor="middle" x="128.88" y="-545.87" font-family="Arial" font-size="17.00">Backend &#160;· &#160;Ứng dụng Python</text>
+</g>
+<g id="clust3" class="cluster">
+<title>cluster_pr</title>
+<path fill="#eff6fb" stroke="#b5cedf" stroke-width="1.6" d="M119,-414.12C119,-414.12 347,-414.12 347,-414.12 353,-414.12 359,-420.12 359,-426.12 359,-426.12 359,-508.52 359,-508.52 359,-514.52 353,-520.52 347,-520.52 347,-520.52 119,-520.52 119,-520.52 113,-520.52 107,-514.52 107,-508.52 107,-508.52 107,-426.12 107,-426.12 107,-420.12 113,-414.12 119,-414.12"/>
+<text xml:space="preserve" text-anchor="middle" x="160.38" y="-500.37" font-family="Arial" font-size="17.00">1 &#160;Trình bày</text>
+</g>
+<g id="clust4" class="cluster">
+<title>cluster_app</title>
+<path fill="#edf7f6" stroke="#8eb8b5" stroke-width="1.6" d="M38,-160.4C38,-160.4 414,-160.4 414,-160.4 420,-160.4 426,-166.4 426,-172.4 426,-172.4 426,-377.99 426,-377.99 426,-383.99 420,-389.99 414,-389.99 414,-389.99 38,-389.99 38,-389.99 32,-389.99 26,-383.99 26,-377.99 26,-377.99 26,-172.4 26,-172.4 26,-166.4 32,-160.4 38,-160.4"/>
+<text xml:space="preserve" text-anchor="middle" x="82" y="-369.84" font-family="Arial" font-size="17.00">2 &#160;Ứng dụng</text>
+</g>
+<g id="clust6" class="cluster">
+<title>cluster_domain</title>
+<path fill="#f0f3fc" stroke="#adb9dd" stroke-width="1.6" d="M87,-26C87,-26 365,-26 365,-26 371,-26 377,-32 377,-38 377,-38 377,-120.4 377,-120.4 377,-126.4 371,-132.4 365,-132.4 365,-132.4 87,-132.4 87,-132.4 81,-132.4 75,-126.4 75,-120.4 75,-120.4 75,-38 75,-38 75,-32 81,-26 87,-26"/>
+<text xml:space="preserve" text-anchor="middle" x="150.88" y="-112.25" font-family="Arial" font-size="17.00">3 &#160;Miền nghiệp vụ</text>
+</g>
+<g id="clust7" class="cluster">
+<title>cluster_inf</title>
+<path fill="#fcf7ec" stroke="#c1ac80" stroke-width="1.6" d="M456,-276.47C456,-276.47 698,-276.47 698,-276.47 704,-276.47 710,-282.47 710,-288.47 710,-288.47 710,-385.12 710,-385.12 710,-391.12 704,-397.12 698,-397.12 698,-397.12 456,-397.12 456,-397.12 450,-397.12 444,-391.12 444,-385.12 444,-385.12 444,-288.47 444,-288.47 444,-282.47 450,-276.47 456,-276.47"/>
+<text xml:space="preserve" text-anchor="middle" x="491.38" y="-376.97" font-family="Arial" font-size="17.00">4 &#160;Hạ tầng</text>
+</g>
+<!-- ui -->
+<g id="node1" class="node">
+<title>ui</title>
+<polygon fill="#ffffff" stroke="#71879c" points="315.43,-732.82 312.43,-736.82 291.43,-736.82 288.43,-732.82 150.57,-732.82 150.57,-689.92 315.43,-689.92 315.43,-732.82"/>
+<text xml:space="preserve" text-anchor="middle" x="233" y="-714.22" font-family="Arial" font-size="12.00" fill="#173047">frontend.pages</text>
+<text xml:space="preserve" text-anchor="middle" x="233" y="-699.97" font-family="Arial" font-size="12.00" fill="#173047">Form Quầy · Kho · báo cáo</text>
+</g>
+<!-- http -->
+<g id="node2" class="node">
+<title>http</title>
+<polygon fill="#ffffff" stroke="#71879c" points="313.93,-648.92 310.93,-652.92 289.93,-652.92 286.93,-648.92 152.07,-648.92 152.07,-606.02 313.93,-606.02 313.93,-648.92"/>
+<text xml:space="preserve" text-anchor="middle" x="233" y="-630.32" font-family="Arial" font-size="12.00" fill="#173047">frontend.api_client</text>
+<text xml:space="preserve" text-anchor="middle" x="233" y="-616.07" font-family="Arial" font-size="12.00" fill="#173047">Gửi yêu cầu, nhận kết quả</text>
+</g>
+<!-- ui&#45;&gt;http -->
+<g id="edge1" class="edge">
+<title>ui&#45;&gt;http</title>
+<path fill="none" stroke="#546779" stroke-dasharray="5,2" d="M233,-689.7C233,-679.79 233,-667.75 233,-656.98"/>
+<polygon fill="#546779" stroke="#546779" points="233,-650.63 235.93,-657.13 233,-652.66 233,-657.13 233,-657.13 233,-657.13 233,-652.66 230.08,-657.13 233,-650.63"/>
+</g>
+<!-- api -->
+<g id="node3" class="node">
+<title>api</title>
+<polygon fill="#ffffff" stroke="#71879c" points="340.93,-475.02 337.93,-479.02 316.93,-479.02 313.93,-475.02 125.08,-475.02 125.08,-432.12 340.93,-432.12 340.93,-475.02"/>
+<text xml:space="preserve" text-anchor="middle" x="233" y="-456.42" font-family="Arial" font-size="12.00" fill="#173047">presentation.api</text>
+<text xml:space="preserve" text-anchor="middle" x="233" y="-442.17" font-family="Arial" font-size="12.00" fill="#173047">Controller · phiên đăng nhập · HTTP</text>
+</g>
+<!-- http&#45;&gt;api -->
+<g id="edge11" class="edge">
+<title>http&#45;&gt;api</title>
+<path fill="none" stroke="#11796a" d="M233,-605.73C233,-575.02 233,-517.34 233,-482.8"/>
+<polygon fill="#11796a" stroke="#11796a" points="233,-476.6 235.93,-483.1 233,-478.63 233,-483.1 233,-483.1 233,-483.1 233,-478.63 230.08,-483.1 233,-476.6"/>
+<text xml:space="preserve" text-anchor="middle" x="267.5" y="-576.52" font-family="Arial" font-size="10.00" fill="#364d5b">HTTPS / JSON</text>
+</g>
+<!-- q -->
+<g id="node4" class="node">
+<title>q</title>
+<polygon fill="#ffffff" stroke="#71879c" points="191.8,-344.49 188.8,-348.49 167.8,-348.49 164.8,-344.49 44.2,-344.49 44.2,-301.59 191.8,-301.59 191.8,-344.49"/>
+<text xml:space="preserve" text-anchor="middle" x="118" y="-325.89" font-family="Arial" font-size="12.00" fill="#173047">application.quay &#160;· &#160;TV1</text>
+<text xml:space="preserve" text-anchor="middle" x="118" y="-311.64" font-family="Arial" font-size="12.00" fill="#173047">Ca · bán · trả · thu chi</text>
+</g>
+<!-- api&#45;&gt;q -->
+<g id="edge4" class="edge">
+<title>api&#45;&gt;q</title>
+<path fill="none" stroke="#546779" stroke-dasharray="5,2" d="M214.27,-431.63C194.47,-409.51 163.19,-374.55 141.7,-350.53"/>
+<polygon fill="#546779" stroke="#546779" points="137.54,-345.88 144.05,-348.77 138.89,-347.39 141.87,-350.72 141.87,-350.72 141.87,-350.72 138.89,-347.39 139.69,-352.67 137.54,-345.88"/>
+</g>
+<!-- k -->
+<g id="node5" class="node">
+<title>k</title>
+<polygon fill="#ffffff" stroke="#71879c" points="407.55,-344.49 404.55,-348.49 383.55,-348.49 380.55,-344.49 222.45,-344.49 222.45,-301.59 407.55,-301.59 407.55,-344.49"/>
+<text xml:space="preserve" text-anchor="middle" x="315" y="-325.89" font-family="Arial" font-size="12.00" fill="#173047">application.kho &#160;· &#160;TV2</text>
+<text xml:space="preserve" text-anchor="middle" x="315" y="-311.64" font-family="Arial" font-size="12.00" fill="#173047">Hàng hóa · nhập · kiểm · duyệt</text>
+</g>
+<!-- api&#45;&gt;k -->
+<g id="edge5" class="edge">
+<title>api&#45;&gt;k</title>
+<path fill="none" stroke="#546779" stroke-dasharray="5,2" d="M246.36,-431.63C260.3,-409.79 282.21,-375.44 297.52,-351.44"/>
+<polygon fill="#546779" stroke="#546779" points="300.99,-346 299.96,-353.05 299.9,-347.71 297.5,-351.48 297.5,-351.48 297.5,-351.48 299.9,-347.71 295.03,-349.9 300.99,-346"/>
+</g>
+<!-- port -->
+<g id="node6" class="node">
+<title>port</title>
+<polygon fill="#ffffff" stroke="#71879c" points="407.93,-235.55 404.93,-239.55 383.93,-239.55 380.93,-235.55 216.07,-235.55 216.07,-178.4 407.93,-178.4 407.93,-235.55"/>
+<text xml:space="preserve" text-anchor="middle" x="312" y="-216.95" font-family="Arial" font-size="12.00" fill="#173047">application.ports</text>
+<text xml:space="preserve" text-anchor="middle" x="312" y="-202.7" font-family="Arial" font-size="12.00" fill="#173047">ITonKho · lưu chứng từ · quyền</text>
+<text xml:space="preserve" text-anchor="middle" x="312" y="-188.45" font-family="Arial" font-size="12.00" fill="#173047">giao dịch · khóa chống ghi trùng</text>
+</g>
+<!-- q&#45;&gt;port -->
+<g id="edge2" class="edge">
+<title>q&#45;&gt;port</title>
+<path fill="none" stroke="#546779" stroke-dasharray="5,2" d="M153.58,-301.12C182.81,-283.94 224.67,-259.32 258.03,-239.71"/>
+<polygon fill="#546779" stroke="#546779" points="263.53,-236.48 259.41,-242.29 261.78,-237.51 257.92,-239.77 257.92,-239.77 257.92,-239.77 261.78,-237.51 256.44,-237.25 263.53,-236.48"/>
+</g>
+<!-- d -->
+<g id="node7" class="node">
+<title>d</title>
+<polygon fill="#ffffff" stroke="#71879c" points="359.05,-86.9 356.05,-90.9 335.05,-90.9 332.05,-86.9 92.95,-86.9 92.95,-44 359.05,-44 359.05,-86.9"/>
+<text xml:space="preserve" text-anchor="middle" x="226" y="-68.3" font-family="Arial" font-size="12.00" fill="#173047">domain &#160;· &#160;dùng chung</text>
+<text xml:space="preserve" text-anchor="middle" x="226" y="-54.05" font-family="Arial" font-size="12.00" fill="#173047">PhieuBan · DongBan · HangHoa · PhieuKiem</text>
+</g>
+<!-- q&#45;&gt;d -->
+<g id="edge6" class="edge">
+<title>q&#45;&gt;d</title>
+<path fill="none" stroke="#546779" stroke-dasharray="5,2" d="M126.84,-301.13C146.23,-255.24 192.5,-145.72 214.29,-94.17"/>
+<polygon fill="#546779" stroke="#546779" points="216.72,-88.42 216.88,-95.55 215.93,-90.29 214.19,-94.41 214.19,-94.41 214.19,-94.41 215.93,-90.29 211.49,-93.27 216.72,-88.42"/>
+</g>
+<!-- k&#45;&gt;port -->
+<g id="edge3" class="edge">
+<title>k&#45;&gt;port</title>
+<path fill="none" stroke="#546779" stroke-dasharray="5,2" d="M314.45,-301.12C314.02,-284.95 313.43,-262.21 312.93,-243.24"/>
+<polygon fill="#546779" stroke="#546779" points="312.76,-236.87 315.85,-243.29 312.81,-238.9 312.93,-243.36 312.93,-243.36 312.93,-243.36 312.81,-238.9 310.01,-243.44 312.76,-236.87"/>
+</g>
+<!-- k&#45;&gt;d -->
+<g id="edge7" class="edge">
+<title>k&#45;&gt;d</title>
+<path fill="none" stroke="#546779" stroke-dasharray="5,2" d="M287.11,-301.11C253.36,-275.78 201,-236.47 201,-236.47 201,-236.47 201,-160.4 201,-160.4 201,-160.4 211.18,-122.13 218.55,-94.44"/>
+<polygon fill="#546779" stroke="#546779" points="220.14,-88.48 221.29,-95.51 219.62,-90.44 218.47,-94.76 218.47,-94.76 218.47,-94.76 219.62,-90.44 215.64,-94.01 220.14,-88.48"/>
+</g>
+<!-- port&#45;&gt;d -->
+<g id="edge8" class="edge">
+<title>port&#45;&gt;d</title>
+<path fill="none" stroke="#546779" stroke-dasharray="5,2" d="M294.8,-178.08C279.66,-153.51 257.74,-117.94 242.73,-93.6"/>
+<polygon fill="#546779" stroke="#546779" points="239.34,-88.09 245.24,-92.09 240.4,-89.82 242.75,-93.62 242.75,-93.62 242.75,-93.62 240.4,-89.82 240.26,-95.16 239.34,-88.09"/>
+<text xml:space="preserve" text-anchor="middle" x="297.7" y="-142.9" font-family="Arial" font-size="10.00" fill="#364d5b">kiểu miền</text>
+</g>
+<!-- infra -->
+<g id="node8" class="node">
+<title>infra</title>
+<polygon fill="#ffffff" stroke="#71879c" points="692.42,-351.62 689.42,-355.62 668.42,-355.62 665.42,-351.62 461.57,-351.62 461.57,-294.47 692.42,-294.47 692.42,-351.62"/>
+<text xml:space="preserve" text-anchor="middle" x="577" y="-333.02" font-family="Arial" font-size="12.00" fill="#173047">infrastructure.postgres</text>
+<text xml:space="preserve" text-anchor="middle" x="577" y="-318.77" font-family="Arial" font-size="12.00" fill="#173047">Repository · SoKhoPostgreSQL · transaction</text>
+<text xml:space="preserve" text-anchor="middle" x="577" y="-304.52" font-family="Arial" font-size="12.00" fill="#173047">SQL · view · lưu khóa yêu cầu</text>
+</g>
+<!-- infra&#45;&gt;port -->
+<g id="edge9" class="edge">
+<title>infra&#45;&gt;port</title>
+<path fill="none" stroke="#546779" stroke-dasharray="5,2" d="M501.36,-294C466.4,-281.04 432.5,-268.47 432.5,-268.47 432.5,-268.47 403.75,-254.04 374.34,-239.27"/>
+<polygon fill="#546779" stroke="#546779" points="368.75,-236.47 375.87,-236.77 370.57,-237.38 374.56,-239.38 374.56,-239.38 374.56,-239.38 370.57,-237.38 373.25,-242 368.75,-236.47"/>
+<text xml:space="preserve" text-anchor="middle" x="475.25" y="-258.97" font-family="Arial" font-size="10.00" fill="#364d5b">hiện thực hợp đồng</text>
+</g>
+<!-- infra&#45;&gt;d -->
+<g id="edge10" class="edge">
+<title>infra&#45;&gt;d</title>
+<path fill="none" stroke="#546779" stroke-dasharray="5,2" d="M553.25,-294.23C537.99,-276.36 521,-256.47 521,-256.47 521,-256.47 433,-160.4 433,-160.4 433,-160.4 340.21,-118.29 278.88,-90.45"/>
+<polygon fill="#546779" stroke="#546779" points="273.05,-87.8 280.18,-87.83 274.9,-88.64 278.97,-90.49 278.97,-90.49 278.97,-90.49 274.9,-88.64 277.76,-93.15 273.05,-87.8"/>
+<text xml:space="preserve" text-anchor="middle" x="516.62" y="-203.48" font-family="Arial" font-size="10.00" fill="#364d5b">ánh xạ</text>
+</g>
+<!-- db -->
+<g id="node9" class="node">
+<title>db</title>
+<path fill="#fcf7ec" stroke="#ad996e" d="M954.17,-231.11C954.17,-234.07 907.48,-236.47 850,-236.47 792.52,-236.47 745.83,-234.07 745.83,-231.11 745.83,-231.11 745.83,-182.84 745.83,-182.84 745.83,-179.88 792.52,-177.48 850,-177.48 907.48,-177.48 954.17,-179.88 954.17,-182.84 954.17,-182.84 954.17,-231.11 954.17,-231.11"/>
+<path fill="none" stroke="#ad996e" d="M954.17,-231.11C954.17,-228.15 907.48,-225.74 850,-225.74 792.52,-225.74 745.83,-228.15 745.83,-231.11"/>
+<text xml:space="preserve" text-anchor="middle" x="850" y="-209.83" font-family="Arial" font-size="12.00" fill="#173047">PostgreSQL · pos_web</text>
+<text xml:space="preserve" text-anchor="middle" x="850" y="-195.58" font-family="Arial" font-size="12.00" fill="#173047">14 bảng nghiệp vụ + web_yeu_cau</text>
+</g>
+<!-- infra&#45;&gt;db -->
+<g id="edge12" class="edge">
+<title>infra&#45;&gt;db</title>
+<path fill="none" stroke="#11796a" d="M644.13,-293.99C683.83,-277.41 734.19,-256.36 775.17,-239.24"/>
+<polygon fill="#11796a" stroke="#11796a" points="781.05,-236.78 776.18,-241.99 779.18,-237.57 775.06,-239.29 775.06,-239.29 775.06,-239.29 779.18,-237.57 773.93,-236.59 781.05,-236.78"/>
+<text xml:space="preserve" text-anchor="middle" x="748.6" y="-258.97" font-family="Arial" font-size="10.00" fill="#364d5b">đọc / ghi</text>
+</g>
+</g>
+</g>
+<text x="20" y="894.0" font-family="Arial" font-size="12" fill="#173047">Nét đứt → phụ thuộc mã nguồn (bên dùng → bên được dùng). Nét liền → giao tiếp khi chạy.</text>
+<text x="20" y="914.0" font-family="Arial" font-size="12" fill="#173047">Điểm khởi tạo bootstrap lắp các Service với adapter PostgreSQL trên cùng giao dịch cho UC02 và UC03.</text>
+</svg>

@@ -1,0 +1,11 @@
+ma,loai,nguoi_phu_trach_de_xuat,quy_tac,kich_ban,minh_chung
+U01,unit,TV1,BR02,Giá lịch sử và giảm giá,test_nghiep_vu.NghiepVu.test_tien_dong_ban_dung_gia_lich_su
+U02,unit,TV1,BR03,Trả hết số lượng,test_nghiep_vu.NghiepVu.test_tra_het_thi_luong_con_tra_bang_khong
+U03,unit,TV1,BR02,Chuyển khoản không tăng quỹ,test_nghiep_vu.NghiepVu.test_chuyen_khoan_khong_tang_quy
+U04,unit,TV1,BR03,Hoàn tiền mặt giảm quỹ,test_nghiep_vu.NghiepVu.test_hoan_tien_mat_giam_quy
+U05,unit,TV2,BR03,Hàng hỏng không nhập lại,test_nghiep_vu.NghiepVu.test_hang_hong_khong_nhap_lai
+U06,unit,TV2,UC06,Giá mới âm bị chặn,test_nghiep_vu.NghiepVu.test_doi_gia_am_bi_chan
+I01,integration,TV1,BR02,Hai lần gửi cùng khóa,kiem_thu_web.POSWeb.test_03_gui_cung_khoa_dong_thoi
+I02,integration,TV2,BR02,Hai phiếu tranh tồn,kiem_thu_web.POSWeb.test_04_khac_khoa_tranh_ton
+I03,integration,TV1,BR02,Rollback khi lưu khóa lỗi,kiem_thu_web.POSWeb.test_05_loi_sau_ghi_phieu
+I04,integration,TV2,BR08,Chặn duyệt theo mốc cũ,kiem_chung.Muc41.test_06_phat_sinh_sau_dem
