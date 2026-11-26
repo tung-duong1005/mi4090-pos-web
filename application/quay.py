@@ -5,7 +5,7 @@ from domain.common import luc, yeu_cau
 
 class CaDaMo(ValueError):
     def __init__(self, ca):
-        super().__init__('Thu ngân đã có ca đang mở.')
+        super().__init__('Thu ngân đã có ca đang mở.' if ca else 'Quầy đang có ca mở hoặc chờ bàn giao.')
         self.ca = ca
 
 
@@ -15,20 +15,26 @@ class QuayService:
         self.kho = kho
         self.dl = phien.du_lieu
 
+    def _ca_cua_thu_ngan(self, nv):
+        ca = self.dl.ca_tai_quay()
+        if ca and (ca['nguoi_mo'] != nv or ca['trang_thai'] != 'MO'):
+            raise CaDaMo(None)
+        return ca
+
     def mo_ca(self, ma, dau):
         with self.dl.giao_dich():
             nv = self.phien.kiem_quyen('01')
             yeu_cau(type(dau) is int and 0 <= dau <= 2**63 - 1,
                     'Tiền đầu ca phải là số nguyên không âm trong phạm vi BIGINT.')
-            hien_tai = self.dl.ca_dang_mo(nv)
+            hien_tai = self._ca_cua_thu_ngan(nv)
             if hien_tai:
                 raise CaDaMo(hien_tai)
             self.dl.tao_ca(ma, nv, dau)
-            return self.dl.ca_dang_mo(nv)
+            return self._ca_cua_thu_ngan(nv)
 
     def ca_dang_mo(self):
         with self.dl.giao_dich(chi_doc=True):
-            return self.dl.ca_dang_mo(self.phien.kiem_quyen('01'))
+            return self._ca_cua_thu_ngan(self.phien.kiem_quyen('01'))
 
     def ban(self, ma, ca, pt, cac_dong):
         with self.dl.giao_dich():

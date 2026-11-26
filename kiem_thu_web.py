@@ -46,6 +46,15 @@ class POSWeb(unittest.TestCase):
         with psycopg.connect(self.path) as db:
             db.execute("INSERT INTO nhan_vien VALUES('N2','Thu ngân 2','HOAT_DONG')")
             db.execute("INSERT INTO tai_khoan VALUES('T2','N2','tn2','fixture','TN','HOAT_DONG')")
+        with ket_noi_request(self.path) as dl:
+            quay, _ = lap_service(dl, 'T2')
+            with self.assertRaises(CaDaMo) as busy:
+                quay.mo_ca('CA1', 200000)
+            self.assertIsNone(busy.exception.ca)
+            dl.db.execute("UPDATE ca_thu_ngan SET trang_thai='BAN_GIAO', du_kien=0, thuc_dem=0 WHERE ma_ca='C'")
+            with self.assertRaises(CaDaMo):
+                quay.mo_ca('CA1', 200000)
+            dl.db.execute("UPDATE ca_thu_ngan SET trang_thai='DONG', nguoi_chot='N', gio_dong=now() WHERE ma_ca='C'")
         barrier = Barrier(2)
         def gui(ma):
             with ket_noi_request(self.path) as dl:
@@ -61,10 +70,9 @@ class POSWeb(unittest.TestCase):
         self.assertEqual({a[0], b[0]}, {201, 409})
         self.assertEqual(a[1], b[1])
         with ket_noi_request(self.path) as dl:
-            self.assertEqual(dl.ca_dang_mo('N2'), a[1])
-            self.assertEqual(dl.ca_dang_mo('N')['ma_ca'], 'C')
+            self.assertEqual(dl.ca_tai_quay(), a[1])
             with self.assertRaises(psycopg.errors.UniqueViolation):
-                dl.tao_ca('CA3', 'N2', 0)
+                dl.tao_ca('CA3', 'N', 0)
 
     def test_02_tra_va_gui_lai(self):
         ma,_ = self.ban('B',2)

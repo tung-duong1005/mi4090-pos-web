@@ -14,7 +14,7 @@ def main():
     migrate.add_argument("source", help="Tệp SQLite nguồn")
     commands.add_parser("check", help="Kiểm tra kết nối, schema, số phiếu và tồn kho")
     commands.add_parser("seed", help="Nạp hai tháng dữ liệu vào database demo trống")
-    commands.add_parser("migrate-uc01", help="Áp dụng ràng buộc một ca mở cho mỗi thu ngân")
+    commands.add_parser("migrate-uc01", help="Áp dụng ràng buộc một ca mở hoặc chờ bàn giao tại quầy")
     args = parser.parse_args()
     dsn = os.environ.get("DATABASE_URL")
     if not dsn:
