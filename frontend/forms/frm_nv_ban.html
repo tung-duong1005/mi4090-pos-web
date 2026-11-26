@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Lập giỏ hàng | Quầy thu ngân</title>
+    <link rel="stylesheet" href="frm_nv_ban.css">
+    <script src="frm_nv_ban.js" defer></script>
+</head>
+<body>
+    <header>Quầy thu ngân</header>
+    <main>
+        <h1>Lập giỏ hàng</h1>
+        <form id="chon-hang">
+            <label for="mat-hang">Chọn mặt hàng</label>
+            <div class="chon">
+                <select id="mat-hang"></select>
+                <button type="submit">Thêm vào giỏ</button>
+            </div>
+        </form>
+        <section aria-labelledby="tieu-de-gio">
+            <h2 id="tieu-de-gio">Giỏ hàng</h2>
+            <div class="bang">
+                <table aria-labelledby="tieu-de-gio">
+                    <thead><tr>
+                        <th>Mã hàng</th><th>Tên hàng</th><th class="tien">Đơn giá</th>
+                        <th>Số lượng</th><th class="tien">Thành tiền</th><th>Thao tác</th>
+                    </tr></thead>
+                    <tbody id="gio-hang">
+                        <tr id="gio-trong"><td colspan="6">Giỏ hàng đang trống.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <footer>Tổng phiếu <strong id="tong" aria-live="polite">0 đ</strong></footer>
+        </section>
+    </main>
+    <template id="mau-dong">
+        <tr>
+            <td></td><td></td><td class="tien"></td>
+            <td><input type="text" inputmode="numeric" autocomplete="off">
+                <small role="status"></small></td>
+            <td class="tien"></td><td><button class="xoa" type="button">Xóa</button></td>
+        </tr>
+    </template>
+</body>
+</html>
