@@ -84,6 +84,11 @@ class KhoDuLieu(IPosStore):
         self.db.execute("INSERT INTO nhat_ky VALUES (%s,%s,%s,%s,%s,%s,%s)",
                         (uuid4().hex, tk, luc(), uc, loai, ma, 'THANH_CONG'))
 
+    def ca_dang_mo(self, nv):
+        return self.db.execute("""SELECT ma_ca, nguoi_mo, tien_dau::text AS tien_dau
+                                  FROM ca_thu_ngan WHERE nguoi_mo=%s AND trang_thai='MO'""",
+                               (nv,)).fetchone()
+
     def tao_ca(self, ma, nv, dau):
         self.db.execute("""INSERT INTO ca_thu_ngan(ma_ca,nguoi_mo,gio_mo,tien_dau,trang_thai)
                                      VALUES(%s,%s,%s,%s,'MO')""", (ma,nv,luc(),dau))

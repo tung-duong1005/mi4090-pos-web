@@ -52,6 +52,8 @@ CREATE TABLE ca_thu_ngan (
   CHECK ((trang_thai='DONG')=(gio_dong IS NOT NULL) AND (trang_thai='DONG')=(nguoi_chot IS NOT NULL))
 );
 
+CREATE UNIQUE INDEX uq_ca_mo_nguoi ON ca_thu_ngan(nguoi_mo) WHERE trang_thai='MO';
+
 CREATE TABLE phieu_ban (
   ma_ban TEXT PRIMARY KEY NOT NULL,
   ma_ca TEXT NOT NULL REFERENCES ca_thu_ngan(ma_ca) ON DELETE RESTRICT,

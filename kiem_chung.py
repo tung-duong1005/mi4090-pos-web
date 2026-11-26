@@ -164,7 +164,7 @@ class SoDo(unittest.TestCase):
                             members.add('+'+f.name+'('+', '.join(names)+')')
                 actual[node.name]=members
         self.assertEqual(shown,actual)
-        self.assertEqual(len(actual),23)
+        self.assertEqual(len(actual),24)
         self.assertTrue(all(k in text for k in ['*--','o--','..>','..|>','--|>',' -- ']))
 
 if __name__=='__main__':

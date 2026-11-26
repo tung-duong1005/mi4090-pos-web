@@ -39,6 +39,33 @@ class POSWeb(unittest.TestCase):
                           WHERE table_schema=current_schema() AND table_type='BASE TABLE'""")
             self.assertEqual(n["n"], 15)
 
+    def test_uc01_hai_yeu_cau_dong_thoi(self):
+        from application.quay import CaDaMo
+        from bootstrap import lap_service
+
+        with psycopg.connect(self.path) as db:
+            db.execute("INSERT INTO nhan_vien VALUES('N2','Thu ngân 2','HOAT_DONG')")
+            db.execute("INSERT INTO tai_khoan VALUES('T2','N2','tn2','fixture','TN','HOAT_DONG')")
+        barrier = Barrier(2)
+        def gui(ma):
+            with ket_noi_request(self.path) as dl:
+                quay, _ = lap_service(dl, 'T2')
+                barrier.wait(timeout=5)
+                try:
+                    return 201, quay.mo_ca(ma, 200000)
+                except CaDaMo as exc:
+                    return 409, exc.ca
+
+        with ThreadPoolExecutor(2) as pool:
+            a, b = pool.map(gui, ['CA1', 'CA2'])
+        self.assertEqual({a[0], b[0]}, {201, 409})
+        self.assertEqual(a[1], b[1])
+        with ket_noi_request(self.path) as dl:
+            self.assertEqual(dl.ca_dang_mo('N2'), a[1])
+            self.assertEqual(dl.ca_dang_mo('N')['ma_ca'], 'C')
+            with self.assertRaises(psycopg.errors.UniqueViolation):
+                dl.tao_ca('CA3', 'N2', 0)
+
     def test_02_tra_va_gui_lai(self):
         ma,_ = self.ban('B',2)
         with ket_noi_request(self.path) as dl:

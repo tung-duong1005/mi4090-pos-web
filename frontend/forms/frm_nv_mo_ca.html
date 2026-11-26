@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Mở ca | Quầy thu ngân</title>
+    <link rel="stylesheet" href="frm_nv_ban.css">
+    <style>
+        main { max-width: 640px; }
+        input { width: min(100%, 260px); }
+        button:disabled { opacity: .55; }
+        dl { padding: 0 24px 12px; overflow-wrap: anywhere; }
+        dt { color: #50655b; }
+        dd { font-weight: bold; margin: 0 0 12px; }
+    </style>
+    <script src="frm_nv_mo_ca.js" defer></script>
+</head>
+<body>
+    <header>Quầy thu ngân</header>
+    <main>
+        <h1>Mở ca thu ngân</h1>
+        <p id="bao" role="status">Đang kiểm tra ca hiện tại…</p>
+        <form hidden>
+            <label for="tien">Tiền đầu ca (đồng)</label>
+            <div class="chon">
+                <input id="tien" inputmode="numeric" aria-describedby="loi" autocomplete="off">
+                <button>Mở ca</button>
+            </div>
+            <small id="loi" role="alert"></small>
+        </form>
+        <section hidden>
+            <h2>Ca đang mở</h2>
+            <dl>
+                <dt>Mã ca</dt><dd id="ma"></dd>
+                <dt>Người mở</dt><dd id="nguoi"></dd>
+                <dt>Tiền đầu ca</dt><dd id="dau"></dd>
+            </dl>
+        </section>
+        <button hidden type="button" id="thu-lai">Kiểm tra lại ca</button>
+    </main>
+</body>
+</html>

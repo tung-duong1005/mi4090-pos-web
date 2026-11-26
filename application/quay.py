@@ -3,6 +3,12 @@ from application.ports import ITonKho
 from application.phien import PhienPOS
 from domain.common import luc, yeu_cau
 
+class CaDaMo(ValueError):
+    def __init__(self, ca):
+        super().__init__('Thu ngân đã có ca đang mở.')
+        self.ca = ca
+
+
 class QuayService:
     def __init__(self, phien: PhienPOS, kho: ITonKho):
         self.phien = phien
@@ -12,7 +18,17 @@ class QuayService:
     def mo_ca(self, ma, dau):
         with self.dl.giao_dich():
             nv = self.phien.kiem_quyen('01')
+            yeu_cau(type(dau) is int and 0 <= dau <= 2**63 - 1,
+                    'Tiền đầu ca phải là số nguyên không âm trong phạm vi BIGINT.')
+            hien_tai = self.dl.ca_dang_mo(nv)
+            if hien_tai:
+                raise CaDaMo(hien_tai)
             self.dl.tao_ca(ma, nv, dau)
+            return self.dl.ca_dang_mo(nv)
+
+    def ca_dang_mo(self):
+        with self.dl.giao_dich(chi_doc=True):
+            return self.dl.ca_dang_mo(self.phien.kiem_quyen('01'))
 
     def ban(self, ma, ca, pt, cac_dong):
         with self.dl.giao_dich():
