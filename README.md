@@ -93,3 +93,11 @@ $env:POS_TEST_DSN = "postgresql://pos_app@localhost:5432/pos_web_test"
 Tạo trước database kiểm thử và cấp cho role quyền tạo schema. Mỗi ca dùng schema ngẫu nhiên, rồi dọn schema do chính ca đó tạo. Bộ kiểm thử gồm hai giao dịch cùng khóa, hai yêu cầu tranh lượng tồn cuối, rollback khi lưu khóa lỗi, thử lại sau khi khóa tài khoản, kiểm thử qua WSGI và nhập SQLite có lịch sử. `ghi_debug.py` tạo log PDB cho hai thành viên. Môi trường tạo gói chặn kết nối TCP nội bộ nên các ca cần Psycopg kết nối máy chủ và hai log debugger chưa được xác nhận. Tệp `fixtures/legacy_empty.sqlite` chỉ dùng làm đầu vào cho kiểm thử nhập dữ liệu.
 
 Tài liệu đối chiếu: [Quản lý giao dịch trong Psycopg 3](https://www.psycopg.org/psycopg3/docs/basic/transactions.html) · [Khóa trong PostgreSQL](https://www.postgresql.org/docs/18/explicit-locking.html).
+
+### FastAPI
+
+Chạy `docker compose up --build`, mở Swagger UI tại `http://localhost:8000/docs`.
+Ứng dụng cung cấp `POST /api/ban` và `POST /api/tra`. Để ghi phiếu, middleware
+xác thực của host phải gán mã tài khoản vào `request.state.ma_tk`. Nếu chưa
+tích hợp middleware, hai endpoint trả 401. Mỗi lần lập phiếu cần một
+`Idempotency-Key`; dùng lại khóa khi gửi lại cùng yêu cầu.
