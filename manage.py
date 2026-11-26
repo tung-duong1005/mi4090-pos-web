@@ -14,6 +14,7 @@ def main():
     migrate.add_argument("source", help="Tệp SQLite nguồn")
     commands.add_parser("check", help="Kiểm tra kết nối, schema, số phiếu và tồn kho")
     commands.add_parser("seed", help="Nạp hai tháng dữ liệu vào database demo trống")
+    commands.add_parser("migrate-uc01", help="Áp dụng ràng buộc một ca mở hoặc chờ bàn giao tại quầy")
     args = parser.parse_args()
     dsn = os.environ.get("DATABASE_URL")
     if not dsn:
@@ -23,6 +24,10 @@ def main():
         if args.command == "init":
             install(db)
             print("Đã tạo schema POS.")
+        elif args.command == "migrate-uc01":
+            with db.transaction():
+                db.execute((SQL / "04_uc01_ca_mo.sql").read_text(encoding="utf-8"))
+            print("Đã áp dụng ràng buộc ca mở.")
         elif args.command == "seed":
             with db.transaction():
                 db.execute((SQL / "03_seed_demo.sql").read_text(encoding="utf-8"))

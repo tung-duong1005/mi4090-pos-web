@@ -1,6 +1,6 @@
 # Đồng bộ sơ đồ lớp sau khi tách tầng
 
-23 kiểu trong lõi và adapter PostgreSQL (gồm IPosStore). XungDotYeuCau là ngoại lệ web, ngoài phạm vi sơ đồ lớp nghiệp vụ 4.1.
+24 kiểu trong lõi và adapter PostgreSQL (gồm IPosStore). XungDotYeuCau là ngoại lệ web, ngoài phạm vi sơ đồ lớp nghiệp vụ 4.1.
 
 ```mermaid
 classDiagram
@@ -160,6 +160,7 @@ classDiagram
     +giao_dich(chi_doc)
     +lay(lop, ma)
     +ghi_nhat_ky(tk, uc, loai, ma)
+    +ca_tai_quay()
     +tao_ca(ma, nv, dau)
     +tao_ban_nhap(ma, ca, pt)
     +them_dong_ban(ma, hang, sl, gia, giam)
@@ -188,10 +189,15 @@ classDiagram
     +ma_tk
     +kiem_quyen(uc)
   }
+  class CaDaMo {
+    +ca
+  }
+  QuayService ..> CaDaMo
   class QuayService {
     +phien
     +kho
     +dl
+    +ca_dang_mo()
     +mo_ca(ma, dau)
     +ban(ma, ca, pt, cac_dong)
     +tra(ma, ca, goc, pt, cac_dong)
@@ -217,6 +223,7 @@ classDiagram
     +mot(sql, *args)
     +lay(lop, ma)
     +ghi_nhat_ky(tk, uc, loai, ma)
+    +ca_tai_quay()
     +tao_ca(ma, nv, dau)
     +tao_ban_nhap(ma, ca, pt)
     +them_dong_ban(ma, hang, sl, gia, giam)
